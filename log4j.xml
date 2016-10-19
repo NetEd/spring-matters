@@ -23,11 +23,11 @@
 		<level value="warn" />
 	</logger>
 
-	<logger name="com.att.it.bsa.mx.service">
+	<logger name="org.it.bsa.mx.service">
 		<level value="debug" />
 	</logger>
 
-	<logger name="com.att.it.bsa.mx.domain">
+	<logger name="org.it.bsa.mx.domain">
 		<level value="debug" />
 	</logger>
 

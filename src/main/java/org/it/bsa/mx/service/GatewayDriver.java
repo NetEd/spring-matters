@@ -15,7 +15,7 @@ public class GatewayDriver {
         		new ClassPathXmlApplicationContext(new String[]{"/META-INF/com/matters/matters-context.xml",
         				"/META-INF/com/matters/jdbc-context.xml"},(Class)GatewayDriver.class);
         ReportGateway gateway = (ReportGateway)context.getBean("yaanaGateway");
-        log.debug((Object)"*** [YaanaGateway] ****");
+        log.debug((Object)"*** GatewayDriver ***");
         List<Matter> m = gateway.processMatters(new Object());
         context.close();
     }

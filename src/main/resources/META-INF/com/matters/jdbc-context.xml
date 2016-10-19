@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-jdbc="http://www.springframework.org/schema/integration/jdbc"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/jdbc http://www.springframework.org/schema/integration/jdbc/spring-integration-jdbc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<jdbc:embedded-database id="datasource" type="H2">
+		<jdbc:script location="classpath:setup-tables.sql" />
+	</jdbc:embedded-database>
+
+	<!-- CDR Datasource -->
+	<int-jdbc:outbound-gateway
+		query="select * from CDR_DATA"  
+		row-mapper="cdrResultMapper"
+		request-channel="callDetailDataChannel"
+		reply-channel="callDetailDataOutChannel"
+		data-source="datasource"/>
+
+	<bean id="cdrResultMapper" class="com.att.it.bsa.mx.domain.CallDetailJsonMapper" />
+	<bean id="matterMapper" class="com.att.it.bsa.mx.domain.YaanaMatterMapper" />
+
+	<!--  Yaana Datasource -->  
+ 	<int-jdbc:outbound-gateway 
+ 		data-source="datasource"
+        update="UPDATE MIDDLEWARE_JOB SET STATUS='IN_PROGRESS' WHERE STATUS='OPEN'"
+        request-channel="findMattersRequestChannel" 
+        query="select * from MIDDLEWARE_JOB"
+        reply-channel="findMattersResponseChannel"
+        row-mapper="matterMapper"
+        max-rows-per-poll="10">
+    </int-jdbc:outbound-gateway>
+ 	
+ 	<int-jdbc:outbound-channel-adapter
+   	query="UPDATE MIDDLEWARE_JOB SET STATUS='COMPLETED' WHERE STATUS='IN_PROGRESS'"
+    data-source="datasource"
+    channel="completedMatterChannel"/>
+
+</beans>

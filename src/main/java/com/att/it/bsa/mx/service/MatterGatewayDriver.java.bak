@@ -1,0 +1,59 @@
+package com.att.it.bsa.mx.service;
+
+import com.att.it.bsa.mx.domain.CallDetailReport;
+import com.att.it.bsa.mx.domain.Matter;
+import com.att.it.bsa.mx.domain.RouteItem;
+import com.att.it.bsa.mx.domain.SubscriberReport;
+import com.att.it.bsa.mx.service.MatterGateway;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import org.apache.log4j.Logger;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MatterGatewayDriver {
+	
+    private static final Logger log = Logger.getLogger((Class)MatterGatewayDriver.class);
+
+    public static void main(String[] args) {
+        ClassPathXmlApplicationContext context = 
+        		new ClassPathXmlApplicationContext(new String[]{"/META-INF/com/matters/matters-context.xml",
+        				"/META-INF/com/matters/jdbc-context.xml"},(Class)MatterGatewayDriver.class);
+        MatterGateway matterGateway = (MatterGateway)context.getBean("matterGateway");
+        log.debug((Object)"*** [MatterGateway] ****");
+        matterGateway.processMatters(createOrder());
+        
+        context.close();
+    }
+    
+    
+    
+
+    private static Matter createOrder() {
+    	
+    	//RouteItem creation should happen in the splitter, the splitter would process the json and populate
+    	CallDetailReport cdrReport = new CallDetailReport();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        String fromDateString = "10/10/2015";
+        LocalDate localFromDate = LocalDate.parse(fromDateString, formatter);
+        cdrReport.setFromDate(localFromDate);
+        String toDate = "10/10/2016";
+        LocalDate localToDate = LocalDate.parse(toDate, formatter);
+        cdrReport.setToDate(localToDate);
+
+        SubscriberReport subReport = new SubscriberReport();
+        subReport.setFromDate(localFromDate);
+        subReport.setToDate(localToDate);
+        
+        RouteItem cdrItem = new RouteItem(cdrReport);
+        RouteItem subItem = new RouteItem(subReport); 
+        
+        ArrayList<RouteItem> routeItems = new ArrayList<RouteItem>();
+        routeItems.add(cdrItem);
+        //routeItems.add(subItem);
+        Matter matter = new Matter();
+        matter.setRouteItems(routeItems);
+        return matter;
+
+    }
+}

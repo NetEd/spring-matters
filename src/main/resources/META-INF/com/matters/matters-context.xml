@@ -17,7 +17,7 @@
    <int:queue capacity="10"/>
   </int:channel>
   
-  <int:gateway id="yaanaGateway" service-interface="com.att.it.bsa.mx.service.YaanaGateway">
+  <int:gateway id="yaanaGateway" service-interface="org.it.bsa.mx.service.ReportGateway">
     	<int:method name="processMatters"
     				request-channel="findMattersRequestChannel"
     				reply-channel="findMattersResponseChannel"
@@ -37,7 +37,7 @@
 		output-channel="matterItemsChannel" />
 	<beans:bean 
 		id="matterSplitter" 
-		class="com.att.it.bsa.mx.service.MatterSplitter" />
+		class="org.it.bsa.mx.service.MatterSplitter" />
 
 	<int:channel id="matterItemsChannel">
 		<int:interceptors>
@@ -50,7 +50,7 @@
 		ref="reportItemRouter" 
 		method="routeReportItem" />
 	<beans:bean id="reportItemRouter" 
-		class="com.att.it.bsa.mx.service.ReportItemRouter" />
+		class="org.it.bsa.mx.service.ReportItemRouter" />
 
 	<int:channel id="callDetailReportChannel">
 		<int:queue capacity="10" />
@@ -79,14 +79,14 @@
 		method="processCellSiteSectorReport" 
 		output-channel="processedItems" />
 
-	<beans:bean id="reportService" class="com.att.it.bsa.mx.service.ReportService" />
+	<beans:bean id="reportService" class="org.it.bsa.mx.service.ReportService" />
   	
 	<int:channel id="processedItems" />
 	<int:aggregator 
 		input-channel="processedItems" 
 		method="prepareDelivery"
 		output-channel="completedMatterChannel">
-		<beans:bean class="com.att.it.bsa.mx.service.MatterAggregator" />
+		<beans:bean class="org.it.bsa.mx.service.MatterAggregator" />
 	</int:aggregator>
 
 

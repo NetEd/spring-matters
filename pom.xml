@@ -12,7 +12,7 @@
 		<spring.version>4.3.1.RELEASE</spring.version>
 		<log4j.version>1.2.17</log4j.version>
 		<junit.version>4.10</junit.version>
-		<java.main.class>com.att.it.bsa.mx.service.YaanaGatewayDriver</java.main.class>
+		<java.main.class>org.it.bsa.mx.service.GatewayDriver</java.main.class>
 	</properties>
 
 	<dependencies>

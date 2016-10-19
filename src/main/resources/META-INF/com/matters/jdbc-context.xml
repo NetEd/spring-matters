@@ -20,10 +20,10 @@
 		reply-channel="callDetailDataOutChannel"
 		data-source="datasource"/>
 
-	<bean id="cdrResultMapper" class="com.att.it.bsa.mx.domain.CallDetailJsonMapper" />
-	<bean id="matterMapper" class="com.att.it.bsa.mx.domain.YaanaMatterMapper" />
+	<bean id="cdrResultMapper" class="org.it.bsa.mx.domain.CallDetailJsonMapper" />
+	<bean id="matterMapper" class="org.it.bsa.mx.domain.MatterResultMapper" />
 
-	<!--  Yaana Datasource -->  
+	<!--  Matter Datasource -->  
  	<int-jdbc:outbound-gateway 
  		data-source="datasource"
         update="UPDATE MIDDLEWARE_JOB SET STATUS='IN_PROGRESS' WHERE STATUS='OPEN'"

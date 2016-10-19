@@ -21,7 +21,7 @@ public class MatterResultMapper implements RowMapper<Matter>{
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 		
 		if (rs.getString("REPORT_TYPE").equals("CDR") ) {
-			System.out.println("*** [YaanaMatterMapper] *** Found a CDR report!");
+			System.out.println("*** [MatterResultMapper] *** Found a CDR report!");
 			CallDetailReport cdrReport = new CallDetailReport();
 			LocalDate localFromDate = LocalDate.parse(rs.getString("REPORT_FROM_DATE"), formatter);
 			cdrReport.setFromDate(localFromDate);
@@ -33,7 +33,7 @@ public class MatterResultMapper implements RowMapper<Matter>{
 		}
 
 		else if (rs.getString("REPORT_TYPE").equals("SUBSCRIBER"))  {
-			System.out.println("*** [YaanaMatterMapper] *** Found a subscriber report!");
+			System.out.println("*** [MatterResultMapper] *** Found a subscriber report!");
 			SubscriberReport subReport = new SubscriberReport();
 			LocalDate localFromDate = LocalDate.parse(rs.getString("REPORT_FROM_DATE"), formatter);
 			subReport.setFromDate(localFromDate);
@@ -45,7 +45,7 @@ public class MatterResultMapper implements RowMapper<Matter>{
 		}
 		
     	matter.setRouteItems(routeItems);		
-    	System.out.println("*** [YaanaMatterMapper] *** returning matter");
+    	System.out.println("*** [MatterResultMapper] *** returning matter");
 		}
     	catch (Exception e) {e.printStackTrace();} 
 		return matter;

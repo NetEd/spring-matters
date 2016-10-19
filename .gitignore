@@ -4,3 +4,9 @@
 .springBeans
 si-matters.log
 target
+src/main/.DS_Store
+src/main/resources/.DS_Store
+src/main/resources/META-INF/.DS_Store
+src/main/resources/META-INF/com/.DS_Store
+
+

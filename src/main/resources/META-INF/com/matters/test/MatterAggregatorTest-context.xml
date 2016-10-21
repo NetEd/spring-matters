@@ -8,12 +8,13 @@
 			http://www.springframework.org/schema/integration/spring-integration.xsd">
 
 	<beans:import resource="classpath:META-INF/com/matters/matters-context.xml" />
-<!-- 
-	<bridge input-channel="outputChannel"
+	<beans:import resource="classpath:META-INF/com/matters/jdbc-context.xml" />
+
+	<bridge input-channel="completedMatterChannel"
 		output-channel="testChannel"/>
 		
 	<channel id="testChannel">
 		<queue/>
 	</channel>
- -->		
+		
 </beans:beans>

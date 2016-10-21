@@ -16,7 +16,10 @@ public class MatterAggregator {
 
 	public Matter prepareDelivery(List<RouteItem> orderItems) {
 
-		//log.info("*** [MatterAggregator] ****");
+		System.out.println("*** [MatterAggregator] ****");
+		System.out.println("*** [MatterAggregator] ****");
+		System.out.println("*** [MatterAggregator] ****");
+		System.out.println("*** [MatterAggregator] ****");
 		final Matter matter = new Matter();
 		System.out.println("*** [MatterAggregator] order item size = " + orderItems.size());
 		matter.setRouteItems(orderItems);

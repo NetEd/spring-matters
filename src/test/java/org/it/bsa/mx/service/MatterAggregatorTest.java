@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 
-@ContextConfiguration	// default context name is <ClassName>-context.xml
+@ContextConfiguration(locations={"classpath:META-INF/com/matters/MatterAggregatorTest-context.xml"})	// default context name is <ClassName>-context.xml
 @RunWith(SpringJUnit4ClassRunner.class)
 public class MatterAggregatorTest {
 

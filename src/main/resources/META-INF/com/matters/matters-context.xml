@@ -24,7 +24,7 @@
     				request-timeout="5000"
     				reply-timeout="5000"/>	
 
-	 </int:gateway>
+  </int:gateway>
 
 
 

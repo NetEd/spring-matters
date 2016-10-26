@@ -21,23 +21,6 @@ UPDATED_DATE DATE
 );
 
 
-/*
-INSERT INTO MIDDLEWARE_JOB (REPORT_TYPE, REPORT_FROM_DATE, REPORT_TO_DATE,RMS_REQUEST_ID, JOB_ID, PRIORITY, STATUS, STATUS_DESCRIPTION, JOB_DATA, CREATED_DATE, UPDATED_DATE)
-VALUES('SUBSCRIBER', '10/10/2015', '10/10/2016',4321, 2233, 'Medium', 'OPEN', '', 
-'{"version": "0.1","version_date": "2005-12-02","RMS_Request_Id": 4321,
-"Unique_Job_Id": 2233,"Call_Back_URL": "http://rms.att.com.gov/job_id/4321","Request_Type": "LI_Provisioning",
-"Request_Submitted_By": "Kerad.2","Request_Comments": "here are my request comments",
-"Priority": "Normal","SLA": "8 Hours","Subscription_Identifiers": [{"type": "Mobile_Phone","value": "232323232",
- "from_date": "2016-10-11:12:22:33.456Z",
- "to_date": "2016-10-12:11:11:22:345Z"}],
-"Requested_Records_Types": ["Web_Activity","Voice","SMS"],
-"Requested_Record_dates": {"from_date": "2000-01-01:00:11:22.333Z","to_date": "2000-01-01:22:33:44.555Z"},
-"Delivery_Info": {"Delivery_Method": "SCP","Server": "12:34:56:78","Port": 1234,"Authentication_Mode": "VPN_CERT","Location": "cygwindr/files/phone_records"}}',
-NOW(), NOW());
-*/
-
-
-
  INSERT INTO MIDDLEWARE_JOB (REPORT_TYPE, REPORT_FROM_DATE, REPORT_TO_DATE,RMS_REQUEST_ID, JOB_ID, PRIORITY, STATUS, STATUS_DESCRIPTION, JOB_DATA, CREATED_DATE, UPDATED_DATE) 
  VALUES('CDR', '10/10/2015', '10/10/2016', 1234, 5678, 'High', 'OPEN', '', 
  '{"version": "0.1","version_date": "2015-12-02","RMS_Request_Id": 1234,
@@ -52,9 +35,21 @@ NOW(), NOW());
  "Requested_Record_dates": {"from_date": "2000-01-01:00:11:22.333Z","to_date": "2000-01-01:22:33:44.555Z"},
  "Delivery_Info": {"Delivery_Method": "Return To RMS"}}',
   NOW(), NOW());
-  
 
-
+/*
+INSERT INTO MIDDLEWARE_JOB (REPORT_TYPE, REPORT_FROM_DATE, REPORT_TO_DATE,RMS_REQUEST_ID, JOB_ID, PRIORITY, STATUS, STATUS_DESCRIPTION, JOB_DATA, CREATED_DATE, UPDATED_DATE)
+VALUES('SUBSCRIBER', '10/10/2015', '10/10/2016',4321, 2233, 'Medium', 'OPEN', '', 
+'{"version": "0.1","version_date": "2005-12-02","RMS_Request_Id": 4321,
+"Unique_Job_Id": 2233,"Call_Back_URL": "http://rms.att.com.gov/job_id/4321","Request_Type": "LI_Provisioning",
+"Request_Submitted_By": "Kerad.2","Request_Comments": "here are my request comments",
+"Priority": "Normal","SLA": "8 Hours","Subscription_Identifiers": [{"type": "Mobile_Phone","value": "232323232",
+ "from_date": "2016-10-11:12:22:33.456Z",
+ "to_date": "2016-10-12:11:11:22:345Z"}],
+"Requested_Records_Types": ["Web_Activity","Voice","SMS"],
+"Requested_Record_dates": {"from_date": "2000-01-01:00:11:22.333Z","to_date": "2000-01-01:22:33:44.555Z"},
+"Delivery_Info": {"Delivery_Method": "SCP","Server": "12:34:56:78","Port": 1234,"Authentication_Mode": "VPN_CERT","Location": "cygwindr/files/phone_records"}}',
+NOW(), NOW());
+*/
 
 
 

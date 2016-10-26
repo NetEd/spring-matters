@@ -19,15 +19,15 @@ public class ReportItemRouter {
 		
 		String channel = "";
 		if(isSubscriberReport(reportItem)) {
-			System.out.println("*** [ReportItemRouter] found a subscriber report ***");
-			channel = "subscriberReportChannel";
+			System.out.println("*** [ReportItemRouter] XXXXXXXXXXfound a subscriber report ***");
+			channel = "callDetailDataChannel";    //channel = "subscriberReportChannel";
 		}
 		else if(isCellSiteSectorReport(reportItem)) {
 			System.out.println("*** [ReportItemRouter] found a cell site sector report ***");
 			channel = "cellSiteSectorReportChannel";
 		}
 		else if (isCallDetailReport(reportItem))  {
-			System.out.println("*** [ReportItemRouter] found a call detail report");
+			System.out.println("*** [ReportItemRouter] ZZZZZZZZZZZfound a call detail report");
 			channel = "callDetailDataChannel";
 		}
 
